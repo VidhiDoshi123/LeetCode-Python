@@ -3,13 +3,24 @@
 class Solution:
     def commonElements (self,A, B, C, n1, n2, n3):
         # your code here
-        s1 = set(A)
-        s2 = set(B)
-        s3 = set(C)
-        
-        set1 = s1.intersection(s2)
-        set2 = set1.intersection(s3)
-        list1 = list(set2)
+        i = 0
+        j = 0
+        k = 0
+        ans = set()
+        while( i<n1 and j<n2 and k<n3):
+            if(A[i] == B[j] and B[j] == C[k]):
+                ans.add(A[i])
+                i = i+1
+                j = j+1
+                k = k+1
+                
+            elif(A[i] < B[j]):
+                i = i+1
+            elif(B[j] < C[k]):
+                j = j+1
+            else:
+                k = k+1
+        list1 = list(ans)
         list1.sort()
         return list1
         
