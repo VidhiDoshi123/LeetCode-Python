@@ -3,7 +3,7 @@ class Solution:
         
         def bse_array(array,low,high,target):
             if(low<=high):
-                mid = low + (high - low) // 2
+                mid =  (high + low) // 2
                 if(array[mid] == target):
                     return True
                 elif(target <array[mid]):
