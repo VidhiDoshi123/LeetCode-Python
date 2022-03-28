@@ -16,10 +16,13 @@ class Solution:
                 is_cycle = True
                 break
         if(is_cycle):
+            print("incycle")
             slow = head
+            print(slow.val)
             while(slow != fast):
                 slow = slow.next
                 fast = fast.next
             if(slow == fast):
+                print(slow)
                 return slow
         return None
