@@ -1,19 +1,21 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         ans = list()
-        hashmap ={}
-        for i in range(len(nums)):
-            num = nums[i]
-            target = - num
-            for j in range(i+1,len(nums)):
-                complement = target - nums[j]
-                if(complement in hashmap and hashmap[complement]!=j):
-                    sublist = list()
-                    sublist.append(nums[i])
-                    sublist.append(nums[j])
-                    sublist.append(complement)
-                    sublist.sort()
-                    if(sublist not in ans):
-                        ans.append(sublist)
-            hashmap[nums[i]] = i
+        nums.sort()
+        for i in range(0,len(nums)-2):
+            start = i+1
+            end = len(nums) -1
+            while(start<end):
+                current_sum = nums[i] + nums[start] + nums[end]
+                if(current_sum == 0):
+                    if [nums[i],nums[start],nums[end]] not in ans:
+                        ans.append([nums[i],nums[start],nums[end]])
+                    start+=1
+                    end-=1
+                elif(current_sum < 0):
+                    start+=1
+                else:
+                    end-=1
+           
+            
         return ans
