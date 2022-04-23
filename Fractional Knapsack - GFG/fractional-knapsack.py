@@ -16,7 +16,7 @@ class Solution:
             else:
                 balance= W-current_capacity
                 profit+=(item.value)*(balance/item.weight)
-                break
+                current_capacity+=balance
         return profit
         
 
