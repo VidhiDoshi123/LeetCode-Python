@@ -1,16 +1,12 @@
 class Solution:
+    def helper(self,nums,res,path):
+        path.sort()
+        if(path not in res):
+            res.append(path)
+        for i in range(len(nums)):
+            self.helper(nums[i+1:],res,path+[nums[i]])
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        def subset(index,ans,ds):
-            ans.append(ds.copy())
-            for i in range(index,len(nums)):
-                if(i!=index and nums[i]== nums[i-1]):
-                    continue
-                ds.append(nums[i])
-                subset(i+1,ans,ds)
-                ds.pop(-1)
-        ds = list()
-        ans = list()
-        nums.sort()
-        subset(0,ans,ds)
-        return ans
+        res = []
+        self.helper(nums,res,[])
+        return res
         
