@@ -2,6 +2,7 @@ class Solution:
     def search(self, nums: List[int], target: int) -> bool:
         low=0
         high=len(nums)-1
+        
         while(low<=high):
             while(low<high and nums[low]==nums[low+1]):
                 low+=1
