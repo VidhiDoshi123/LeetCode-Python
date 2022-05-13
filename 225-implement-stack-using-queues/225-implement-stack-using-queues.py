@@ -6,12 +6,14 @@ class MyStack:
 
     def push(self, x: int) -> None:
         self.q1.append(x)
+        for i in range(0,len(self.q1)-1):
+            self.q1.append(self.q1.pop(0))
 
     def pop(self) -> int:
-        return self.q1.pop(-1)
+        return self.q1.pop(0)
 
     def top(self) -> int:
-        return self.q1[-1]
+        return self.q1[0]
 
     def empty(self) -> bool:
         return self.q1==[]
