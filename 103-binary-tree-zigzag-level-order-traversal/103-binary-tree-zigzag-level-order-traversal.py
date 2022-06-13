@@ -9,6 +9,7 @@ class Solution:
         q = []
         ans =[]
         q.append(root)
+        change = False
         while(q):
             level =[]
             qlen = len(q)
@@ -18,12 +19,12 @@ class Solution:
                     level.append(node.val)
                     q.append(node.left)
                     q.append(node.right)
-            if(len(level)!=0):
+            if(len(level)!=0 and not change):
                 ans.append(level)
-        for i in range(len(ans)):
-            if(i%2!=0):
-                odd_level = ans.pop(i)
-                reverse_odd_level = odd_level[::-1]
-                ans.insert(i,reverse_odd_level)
+            elif(len(level)!=0 and change):
+                ans.append(level[::-1])
+            change = not change
+                
+        
         return ans
         
