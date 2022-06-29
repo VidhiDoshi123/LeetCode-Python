@@ -7,14 +7,15 @@
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         
-        def isSymmetricHelper(left,right):
-            if(left is None or right is None):
-                return left==right
-            if(left.val!=right.val):
+        q=[(root.left,root.right)]
+        while(q):
+            left_subtree,right_subtree = q.pop()
+            if(left_subtree is None and right_subtree is None):
+                continue
+            if((left_subtree is not None and right_subtree is None) or(left_subtree is None and right_subtree is not None) or left_subtree.val!=right_subtree.val):
                 return False
-            return (isSymmetricHelper(left.left,right.right) and isSymmetricHelper(left.right,right.left))
-        if(root is None):
-            return False
-        return isSymmetricHelper(root.left,root.right)
+            q.append((left_subtree.left,right_subtree.right))
+            q.append((left_subtree.right,right_subtree.left))
+        return True
         
         
