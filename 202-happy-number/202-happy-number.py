@@ -1,14 +1,20 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        def get_next(number):
-            total_sum = 0
-            while number > 0:
-                number, digit = divmod(number, 10)
-                total_sum += digit ** 2
-            return total_sum
-        tortoise = n
-        hare = get_next(n)
-        while hare!=1 and hare!=tortoise:
-            tortoise = get_next(tortoise)
-            hare = get_next(get_next(hare))
-        return hare == 1
+        ans=[]
+        def square_num(n):
+            summ=0
+            while(n):
+                summ +=(n%10)*(n%10)
+                n=n//10
+            return summ
+        while(True):
+            squared_num=square_num(n)
+            print(squared_num)
+            if(squared_num in ans):
+                return False
+            elif(squared_num == 1):
+                return True
+            else:
+                ans.append(squared_num)
+                n=squared_num
+        return False
